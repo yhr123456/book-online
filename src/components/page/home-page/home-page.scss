@@ -1,0 +1,118 @@
+
+.home-wrap{
+  .center-wrap{
+      width: 100%;
+  }
+  .book-box{
+    margin-top: 25px;
+    width: 100%;
+    & > .title-box{
+      & > h1{
+        padding-left: 4%;
+        box-sizing: border-box;
+        font-size: 20px;
+        margin: 5px 0;
+        font-weight: 700;
+        font-style: normal;
+        text-decoration: none;
+        font-family: 微软雅黑;
+        color: rgb(0, 0, 0);
+      }
+    }
+    .content-box{
+      padding: 0;
+      width: 100%;
+      font-size: 0;
+    li{
+      width: 44%;
+      height: 100%;
+      margin: 10px 3%;
+
+      display: inline-block;
+      .img-box{
+        width: 100%;
+        height: 276px;
+        img{
+          height: 100%;
+          width: 100%;
+        }
+      }
+      .title{
+        width:100%;
+        font-size: 16px;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space:nowrap;
+        margin-bottom: 5px;
+      }
+      .price{
+        font-size: 16px;
+        color: #bf5454;
+        margin: 0;
+        span{
+          font-size: 16px;
+          color: #bf5454;
+          display: inline-block;
+        }
+      }
+    }
+    }
+  }
+   .discount{
+    border-bottom: 1px solid gray;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    span{
+      color: orange;
+    }
+    p{
+    box-sizing: border-box;
+    font-size: 16px;
+    font-weight: 400;
+    font-style: normal;
+    text-decoration: none;
+    font-family: 微软雅黑;
+    color: rgb(0, 0, 0);
+    margin-left: 10px;
+    }
+    }
+    .swiper-slide img{
+    width: 100%;
+    }
+    .swiper-container {
+  width: 100%;
+  height: 100%;
+
+    }
+    .swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+
+  /* Center slide text vertically */
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+    }
+    .swiper-pagination{
+  .swiper-pagination-bullet-active{
+      color: red;
+  }
+
+  span{
+      width: 15px;
+      height: 15px;
+  }
+ } 
+ 
+}
