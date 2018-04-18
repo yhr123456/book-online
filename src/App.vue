@@ -1,10 +1,8 @@
 <template>
   <div id="app">
-    <div id="header">
-      <h2>分类</h2>
-    </div>
+
     <div>
-      <router-view/>
+      <router-view @allshopping="addshopping"/>
     </div>
     <div id="footer">
       
@@ -34,7 +32,18 @@
 
 <script>
 export default {
-  name: 'App'
+  name: 'App',
+  data(){
+    return{
+      allCommodity:[]
+    }
+  },
+  methods:{
+    addshopping(val){
+      this.allCommodity.push(val)
+      localStorage.setItem(`info`,JSON.stringify(this.allCommodity))
+    }
+  }
 }
 </script>
 
@@ -58,12 +67,14 @@ body,html{
 }
 #footer{
       padding: 10px 0;
-      position: absolute;
+      position: fixed;
       bottom: 0px;
       box-sizing: border-box;
       padding: 15px;
       width: 100%;
       border-top: 1px solid lightgray;
+      z-index: 1;
+      background: white
     }
     ul{
       width: 100%;
