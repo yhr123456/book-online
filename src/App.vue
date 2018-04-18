@@ -2,10 +2,9 @@
   <div id="app">
 
     <div>
-      <router-view @allshopping="addshopping"/>
+      <router-view @allshopping="addshopping" @noftooer="no" @hasfooter="hasfooter"/>
     </div>
-    <div id="footer">
-      
+    <div id="footer" v-show="ti">   
       <ul>
           <router-link tag="li" :to="{name: 'HomePage'}" exact >
              <i  class="fa fa-home fa-2x"></i>
@@ -35,13 +34,23 @@ export default {
   name: 'App',
   data(){
     return{
-      allCommodity:[]
+      allCommodity:[],
+      ti:true
     }
+  },
+  beforeCreate(){
+    this.ti=true
   },
   methods:{
     addshopping(val){
       this.allCommodity.push(val)
       localStorage.setItem(`info`,JSON.stringify(this.allCommodity))
+    },
+    no(val){
+          this.ti=val
+    },
+    hasfooter(val){
+          this.ti = val
     }
   }
 }

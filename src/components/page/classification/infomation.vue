@@ -1,7 +1,7 @@
 <template>
     <div>
         <div id="header">
-                <h2>
+                <h2 @click="haveftooer">
                     <router-link to="/" tag="span" style="float:left">&lt;</router-link>
                     分类 
                     <span></span>
@@ -48,6 +48,9 @@ export default {
   methods:{
       addcar(){
             this.$emit(`storage`,this.info)
+      },
+      haveftooer(){
+          this.$emit('haveftooer',true)
       }
   }
 }

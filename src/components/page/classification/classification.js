@@ -1,6 +1,7 @@
 import mey from './infomation'
 export default {
     name:'Class',
+    props:['was'],
     data(){
         return{
             kinds:[],
@@ -42,6 +43,10 @@ export default {
             this.transport = this.less[index]
             this.detils=false
             this.build = true
+            this.$emit(`noftooer`,false)
+        },
+        haveftooer(val){
+            this.$emit('hasfooter',val)
         }
     },
     computed:{
