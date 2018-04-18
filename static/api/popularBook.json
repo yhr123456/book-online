@@ -1,0 +1,30 @@
+[
+    {
+        "name": "Node.js实战",
+        "describe": "《Node.js实战》是Node.js的实战教程，涵盖了为开发产品级Node应用程序所需要的一切特性、技巧以及相关理念。从搭建Node开发环境，到一些简单的演示程序，到开发复杂应用程序所必不可少的异步编程。书中还介绍了HTTP API的应用技巧等。",
+        "author": "Mike Cantelon & Marc Harter",
+        "cover": "https://images-cn.ssl-images-amazon.com/images/I/51agRFdCcfL._SX446_BO1,204,203,200_.jpg",
+        "price": 54.60
+    },
+    {
+        "name": "Node.js进阶之路",
+        "describe": "本书内容涵盖了 Node.js高并发的原理、源码分析以及使用 Node.js开发应用所需要的不同层面的技术实践。具体来讲，本书包括 Node.js异步机制（配以源码分析）、编辑与调试、测试技术、Docker 部署、模块机制、V8 引擎与代码优化、Promise 和 ES6 Generator、LoopBack 开源框架、使用 C++ 编写扩展、JavaScript严格模式、编码规范等内容。在 LoopBack 章节，本书详细介绍了使用此框架开发企业级 Web 应用的步骤，帮助读者迅速掌握使用这个强大框架的诀窍。最后一章详细介绍了编写不同类型的 C++ 模块的知识，并对堆内存管理等内容做了深入探讨。",
+        "author": "尤嘉",
+        "cover": "https://images-cn.ssl-images-amazon.com/images/I/61uocSHd7vL.jpg",
+        "price": 30.60
+    },
+    {
+        "name": "Node与Express开发",
+        "describe": "本书系统讲解了使用Express开发动态Web应用的流程和步骤。作者不仅讲授了开发公共站点及REST API的基础知识，同时还讲解了构建单页、多页及混合Web应用的规划方式及最佳实践。具体而言，第1~5章介绍Node 和Express，搭建一个示例网站的骨架，讨论测试和QA。第6~12章介绍Node中更重要的结构，讲解模板，介绍cookies、会话和表单处理器，探讨中间件以及从服务器发送电子邮件。第13~15章讨论持久化、URL路由、API的编写、流行的MVC范式。第18~22章讨论安全、社交媒体集成以及网站的调试、启用和维护。",
+        "author": "Ethan Brown",
+        "cover": "https://images-cn.ssl-images-amazon.com/images/I/51Uy66RHlsL._SX381_BO1,204,203,200_.jpg",
+        "price": 45.50
+    },
+    {
+        "name": "React全栈：Redux+Flux+webpack+Babel整合开发",
+        "describe": "本书从现代前端开发的标准、趋势和常用工具入手，由此引出了优秀的构建工具webpack 和JavaScript库React，之后用一系列的实例来阐述两者的特色、概念和基本使用方法。随着应用复杂度的增加，进而介绍了Flux 和Redux 两种架构思想，并且使用Redux 对现有程序进行改造，最后介绍了在开发过程中出现的反模式和性能优化方法。",
+        "author": "张轩 & 杨寒星",
+        "cover": "https://images-cn.ssl-images-amazon.com/images/I/51PoQs17xOL._SX397_BO1,204,203,200_.jpg",
+        "price": 44.85
+    }
+]
