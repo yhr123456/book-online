@@ -4,6 +4,9 @@ import HomePage from '@/components/page/home-page/HomePage'
 import Class from '@/components/page/classification/Class'
 import shoppingCart from '@/components/page/shopping-cart/shoppingCart'
 import PersonalCenter from '@/components/page/personal-center/PersonalCenter'
+import PersonalData from '@/components/page/personal-center/PersonalData'
+import Address from '@/components/page/personal-center/Address'
+
 
 
 Vue.use(Router)
@@ -31,6 +34,17 @@ export default new Router({
       path: '/PersonalCenter',
       name: 'PersonalCenter', 
       component: PersonalCenter
-    }
+    },
+    {
+      path: '/PersonalData',
+      name: 'PersonalData', 
+      component: PersonalData
+    },
+    {
+      path: '/Address',
+      name: 'Address', 
+      component: Address
+    },
+
   ]
 })
