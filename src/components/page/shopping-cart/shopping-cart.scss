@@ -1,0 +1,71 @@
+#shoopingcar{
+    
+    overflow: hidden;
+    >p{
+        margin: 0 5px;
+        text-align: right;
+        color:rgb(31, 167, 212);
+    }
+    #commodity{
+        width: 95%;
+        height: 100px;
+        margin: 10px 2.5%;
+        overflow: hidden;
+        border-top: 1px solid gray;
+        padding-top: 10px;
+        img{
+            width: 30%;
+            height: 100px;
+            
+        }
+        div{
+            display: inline-block;
+            width: 60%;
+            height: 100%;
+            overflow: hidden;
+            margin-left:10px ;
+            p{
+                width: 100%;
+                margin: 10px 5px;
+                text-overflow: ellipsis;
+                overflow: hidden;
+                white-space: nowrap;
+                
+                input{
+                    width: 50px;
+                    height: 20px;
+                    box-sizing: border-box;
+                    margin: 5px;
+            
+                }
+                span{
+                    display:inline-block;
+                    width: 20px;
+                    height: 20px;
+                    box-sizing: border-box;
+                    border: 1px solid black;
+                    text-align: center;
+                    line-height: 20px
+                }
+                span:first-child{
+                    margin-left: 25px;
+                }
+            }
+            
+        }
+    }
+    button{
+        width: 70%;
+        height: 40px;
+        border: none;
+        background: forestgreen;
+        color: whitesmoke;
+        font-size: 15px;
+        border-radius: 5px;
+        margin: 10px 15%;
+    }
+    button:hover{
+        background: green;
+    }
+
+}
