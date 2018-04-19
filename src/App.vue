@@ -16,7 +16,7 @@
               <i class="fa fa-shopping-cart fa-2x"></i>
             <p>购物车</p>
           </router-link>
-          <router-link tag="li" :to="{name: 'PersonalCenter'}" class="logo">
+          <router-link tag="li" :to="{name: 'SigninAndSingnup'}" class="logo">
              <i class="fa fa-user fa-2x"></i>
             <p>我</p>
           </router-link>

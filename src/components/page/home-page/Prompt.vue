@@ -103,22 +103,22 @@ export default {
  .prompt-wrap{
      position: relative;
      width: 100%;
-     height: 100%;
-     background: rgba(94,94,94,.75);
+    //  height: 100%;
+    //  background: rgba(94,94,94,.75);
      position: absolute;
      top: 0;
      left: 0;
      z-index: 5;
      & > .prompt-content{
-         width: 90%;
-         height: 90%;
-         background: white;
-         margin: 0 auto;
-         position: absolute;
-         bottom: 0;
-         left: 50%;
-         transform: translateX(-50%);
-         border: 1px solid gray;
+        width: 90%;
+        height: 90%;
+        background: white;
+        margin: 0 auto;
+        position: fixed;
+        bottom: 2%;
+        left: 50%;
+        -webkit-transform: translateX(-50%);
+        border: 1px solid gray;
          &>.prompt-close{
              height: 10%;
              padding: 10px 0;

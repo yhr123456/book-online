@@ -6,6 +6,7 @@ import shoppingCart from '@/components/page/shopping-cart/shoppingCart'
 import PersonalCenter from '@/components/page/personal-center/PersonalCenter'
 import PersonalData from '@/components/page/personal-center/PersonalData'
 import Address from '@/components/page/personal-center/Address'
+import SigninAndSingnup from '@/components/page/personal-center/SigninAndSingnup'
 
 
 
@@ -44,6 +45,11 @@ export default new Router({
       path: '/Address',
       name: 'Address', 
       component: Address
+    },
+    {
+      path: '/SigninAndSingnup',
+      name: 'SigninAndSingnup', 
+      component: SigninAndSingnup
     },
 
   ]

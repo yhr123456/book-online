@@ -93,7 +93,7 @@ export default {
             position: relative;
             border-bottom: 1px solid gray;
             list-style: none;
-            padding: 0px 5%;
+            padding: 0px 3%;
             -webkit-box-sizing: border-box;
             box-sizing: border-box;
             height: 70px;
@@ -107,7 +107,6 @@ export default {
               &> input{
                 border: 0;
                 font-size: 18px;
-                padding: 12px 0px;
                 width: 70%;
                 outline: none;
                 display: inline-block;

@@ -61,20 +61,38 @@
    .discount{
     border-bottom: 1px solid gray;
     display: flex;
-    justify-content: center;
+    // justify-content: center;
     align-items: center;
     span{
+      width: 5%;
+      padding: 0 20px;
       color: orange;
     }
+    .remove{
+      width: 90%;
+      overflow: hidden;
+    }
     p{
-    box-sizing: border-box;
-    font-size: 16px;
-    font-weight: 400;
-    font-style: normal;
-    text-decoration: none;
-    font-family: 微软雅黑;
-    color: rgb(0, 0, 0);
-    margin-left: 10px;
+      width: 100%;
+      box-sizing: border-box;
+      font-size: 18px;
+      font-weight: 400;
+      font-style: normal;
+      text-decoration: none;
+      font-family: 微软雅黑;
+      color: rgb(0, 0, 0);
+      margin-left: 10px;
+      position: relative;
+      right: -100%;
+      animation: remove 6s linear infinite;
+    }
+    @keyframes remove{
+      0% {
+        right: -100%;
+    }
+    100% {
+        right: 100%
+    }
     }
     }
     .swiper-slide img{

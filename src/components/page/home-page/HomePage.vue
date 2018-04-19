@@ -30,9 +30,12 @@
   <!-- 打折消息 -->
     <div class="discount">
         <span class="fa fa-bell-o fa-2x"></span>
-        <p>
+        <div class="remove">
+            <p>
             双12全场图书低至1折，更有隐藏神秘惊喜
-        </p>
+           </p>
+        </div>
+        
     </div>
     <!-- content -->
     <div class="content-wrap">

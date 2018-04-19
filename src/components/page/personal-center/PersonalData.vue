@@ -100,13 +100,14 @@ export default {
               position: relative;
               border-bottom: 1px solid gray;
               list-style: none;
-              padding: 0px 5%;
+              padding: 0px 3%;
               box-sizing: border-box;
               height: 60px;
               &> label{
                   line-height: 60px;
                   display: inline-block;
                   width: 20%;
+                  height: 100%;
                   font-size: 18px;
                   color: gray;
               }
@@ -114,8 +115,6 @@ export default {
                   padding: 0;
                   border: 0;
                   font-size: 18px;
-                  padding: 12px 0px;
-                //   height: 59px;
                   width: 70%;
               
                   outline: none;
@@ -154,7 +153,7 @@ export default {
               }
           }
           li:last-child{
-              padding: 10px 5%;
+              padding: 10px 3%;
               border-bottom: 1px solid gray;
               position: relative;
               width: 100%;
