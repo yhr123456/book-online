@@ -1,10 +1,14 @@
 <template>
   <div id="app">
-      <router-view/>
-      
-      <div id="footer" v-show="displayFunction">
+
+
+      <router-view @allshopping="addshopping" @noftooer="no" @hasfooter="hasfooter"/>
+    <div id="footer" v-show="ti">   
+
+     
       <ul class="footer">
           <router-link tag="li" :to="{name: 'HomePage'}" exact class="logo" >
+
              <i  class="fa fa-home fa-2x"></i>
              <p>首页</p>
           </router-link>
@@ -31,7 +35,21 @@ export default {
   name: 'App',
   data(){
     return{
-       display:true,
+
+      allCommodity:[],
+      ti:true
+    }
+  },
+  methods:{
+    addshopping(val){
+      this.allCommodity.push(val)
+      localStorage.setItem(`info`,JSON.stringify(this.allCommodity))
+    },
+    no(val){
+          this.ti=val
+    },
+    hasfooter(val){
+          this.ti = val;
     }
   },
   computed:{
@@ -106,12 +124,16 @@ body,html{
       height: 80px;
       background: white;
       padding: 10px 0;
+
       position:fixed;
+
       bottom: 0px;
       box-sizing: border-box;
       padding: 15px;
       width: 100%;
       border-top: 1px solid lightgray;
+      z-index: 1;
+      background: white
     }
     .footer{
       width: 100%;
