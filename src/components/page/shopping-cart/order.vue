@@ -96,8 +96,7 @@ export default {
   computed:{
       allprice:{
           get(){
-             return this.total+10;
-             
+             return this.total+10;    
           }
           
       }

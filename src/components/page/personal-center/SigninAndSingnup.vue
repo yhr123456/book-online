@@ -40,7 +40,7 @@
                         <input type="number" placeholder="请输入您11位的手机号" v-model="phoneNum" @keyup="checkPhoneNum">
                     </li>
                     <li>
-                        <i class="fa fa-user-o"></i>
+                        <i class="fa fa-user-one"></i>
                         <input type="text" placeholder="请输入您的昵称" v-model="name" @keyup="checkName">
                     </li>
                     <li>
@@ -102,7 +102,6 @@
                 phoneNumLogin:'',
                 passwordLogin:'',
                 logPartFlag:true,
-                mask:false,
                 routername:'SigninAndSingnup'
             }
         },
@@ -122,24 +121,24 @@
             },
             /*手机号验证格式*/
             checkPhoneNum(){
-                if(/^1(3|4|5|7|8)\d{9}$/.test(this.phoneNum)){
+                if(/^1(3|4|5)\d{9}$/.test(this.phoneNum)){
                     document.getElementsByClassName('fa-mobile-phone')[0].style='color:#1cb43d';
                     this.phoneNumFlag=true;
                 }else {
                     document.getElementsByClassName('fa-mobile-phone')[0].style='color:red';
                 }
             },
-            /*验证昵称是否为空*/
+            /*判断验证昵称是否为空*/
             checkName(){
                 if(this.name !==''){
-                    document.getElementsByClassName('fa-user-o')[0].style='color:#1cb43d';
+                    document.getElementsByClassName('fa-user-one')[0].style='color:#1cb43d';
                     this.nameFlag=true;
                 }
                 else {
-                    document.getElementsByClassName('fa-user-o')[0].style='color:red';
+                    document.getElementsByClassName('fa-user-one')[0].style='color:red';
                 }
             },
-            /*验证密码是否为空*/
+            /*判断验证密码是否为空*/
             checkPassword1(){
                 if(this.password1 !==''){
                     document.getElementsByClassName('register')[0].getElementsByTagName('li')[2].getElementsByClassName('fa-lock')[0].style='color:#1cb43d';
@@ -148,14 +147,13 @@
                     document.getElementsByClassName('register')[0].getElementsByTagName('li')[2].getElementsByClassName('fa-lock')[0].style='color:red';
                 }
             },
-            /*验证密码是否一样*/
+            /*判断验证密码是否一样*/
             checkPassword2(){
                 if(this.password2 ==this.password1){
                     document.getElementsByClassName('register')[0].getElementsByTagName('li')[3].getElementsByClassName('fa-lock')[0].style='color:#1cb43d';
                     this.password2Flag=true;
                 }else {
                     document.getElementsByClassName('register')[0].getElementsByTagName('li')[3].getElementsByClassName('fa-lock')[0].style='color:red';
-
                 }
             },
             /*注册成功后情况注册框值跳转到个人中心页面同时将数据存储到本地*/
@@ -171,15 +169,11 @@
                     pass:this.password1,
                     phone:this.phoneNum
                 }
-                console.log(info)
-                console.log(3333);
                 if(this.phoneNumFlag&&this.nameFlag&&this.password1Flag&&this.password2Flag){
-                    // alert('注册成功！');
                     // 将用户和用户密码上传到app.vue
                     this.userInfo = info;
                     this.$emit("singnup",this.userInfo,this.username);
                     this.signinflag = false;
-                    // this.loginFlag=true;
                     this.registerFlag=false;
                     this.loginCheckStatus='login-checked';
                     this.registerCheckStatus='';
@@ -191,20 +185,14 @@
                     this.name='';
                     this.password1='';
                     this.password2='';
-                    this.logPartFlag=false;
-                    
-                    
+                    this.logPartFlag=false;         
                 }
             },
-            // saveRegister(){
-            //     this.$emit("routername",this.routername);
-            // },
             /*登录时获取输入框值判断是否与本地存储的值一样*/
             loginPersInfo(){
                 //判断本地是否有用户名
                 if(!localStorage.getItem("userinfo")){
-                    //没有
-                    
+                    //没有 
                 }
                 /*登录成功就跳转到个人中心*/
                 if(this.passwordLogin == localStorage.getItem('password2')&&this.phoneNumLogin == localStorage.getItem('phoneNum')){
@@ -214,7 +202,6 @@
                 else{
                       this.mask=true;
                       this.maskname = "输入的密码和账号不正确!"
-
                 }
             },
             /*关闭提示框*/

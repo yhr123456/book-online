@@ -42,8 +42,7 @@
                       <!-- 详情 -->
                       <div class="detail-wrap" @click="detailclick">
                           <router-link tag="div" :to="{name: 'infomation',params:{info}}" class="detail">
-                          详情 &gt;
-                         
+                          详情 &gt;    
                       </router-link>
                       </div>
                       

@@ -112,30 +112,13 @@ export default {
                }else{
                    //弹出框
                    this.mask = true;
-               }
-            //    this.main=false
-            //    this.orderpage=true
-            //    this.$emit(`noftooer`,false)
-            //    let inp = document.getElementsByClassName('amount')
-            //    for(var i = 0;i < inp.length;i++){ 
-            //         let num = Number(inp[i].value)
-            //        let total =Number(this.commodity[i].price) * num
-            //         this.num.push(total)
-            //    }
-            //   let cc =  this.num.reduce(function(a,b){
-            //        return a+b
-            //    })
-            //    this.total=cc
-               
+               }     
            },
            //否的点击事件
            no(){
                 this.mask = false;
            },
            //是的点击事件
-        //    yes(){
-        //     this.$router.push({path:"Address"});
-        //    },
            havefooter(){
                this.$emit(`hasfooter`,true)
            },

@@ -10,17 +10,6 @@ export default {
         display:'',
     }
   },
-  // computed:{
-  //    getusername(){
-  //     if(localStorage.getItem("userinfo")){
-  //       let data = JSON.parse(localStorage.getItem(`userinfo`));
-  //       this.username = data[0].user;
-  //       }else{
-  //         this.username = "没有登录";
-  //       }
-  //       return this.username;
-  //    }
-  // },
   created(){
     this.getname();
   },
@@ -37,12 +26,6 @@ export default {
           show:false
       }
       this.display = username;
-      
-      // if(this.$route.params.user == undefined ){
-      //  this.username = "没有登录";
-      // }else{
-      //   this.username = this.$route.params.user;
-      // }
     }
   }
   

@@ -1,12 +1,5 @@
 <template>
     <div>       
-    <!-- 遮罩层 -->
-    <!-- <div class="mask-layer" v-if="mask">
-        <div class="tips">
-            <i class="cancel" @click="cancelTips">×</i>
-            <p>已加入购物车</p>
-        </div>
-    </div> -->
     <!-- 遮罩 -->
         <div v-if="showMask" class="mask">
             <div>{{maskname}}</div>
@@ -69,7 +62,6 @@ export default {
           localInfo:{},
           shoppingflag:true,
           addflag:false,
-          //newinfo:{},
           mask:false,
           showflag:{
               show:true,
@@ -78,15 +70,6 @@ export default {
       }
   },
   computed:{
-    //   getinfo(){
-    //       if(this.info == undefined){
-    //           this.newinfo = this.$route.params;
-    //           this.info = this.newinfo;
-    //       }else{
-    //           this.newinfo = this.info;
-    //       }
-    //     return this.newinfo;
-    //   }
      info(){
           if(this.fo == undefined){
               return this.$route.params.info
@@ -102,6 +85,7 @@ export default {
       getinfo(){
           this.localInfo = this.info;
       },
+      /*加入购物车的点击事件*/
       addcar(){
              //加入购物车
             this.showMask = !this.showMask;
@@ -126,8 +110,7 @@ export default {
                 console.log(getlocalInfo);
                 if(getlocalInfoLen == 0){
                     getlocalInfo.push(this.localInfo);
-                    localStorage.setItem("newinfo",JSON.stringify(getlocalInfo));
-                    
+                    localStorage.setItem("newinfo",JSON.stringify(getlocalInfo));        
                 }
                 for(let i = 0;i<getlocalInfoLen;i++){
                     if(name === getlocalInfo[i].name){
@@ -148,21 +131,13 @@ export default {
           setTimeout( () =>{
             this.showMask = !this.showMask;
           },2000)
-
-
-
-            // this.mask = true;
-            // this.$emit(`storage`,this.info);
-            // this.addflag = true;
-            // this.shoppingflag = false;
-
       },
       payclick(){
           this.addflag = false;
           this.shoppingflag = true;
       },
+        /*判断 */
       haveftooer(){
-          console.log(1);
           this.$emit('haveftooer',this.showflag)
       },
       cancelTips(){
@@ -198,45 +173,6 @@ export default {
             background-color: rgba(255, 255, 255, 0.9);
         }
     }
-
-// /*遮罩层*/
-//     .mask-layer{
-//         background: rgba(0,0,0,0.5);
-//         position: fixed;
-//         top: 0;
-//         left: 0;
-//         right: 0;
-//         bottom: 0;
-//     }
-//     .mask-layer .tips{
-//         width: 300px;
-//         height: 150px;
-//         background: white;
-//         position: absolute;
-//         top: 50%;
-//         left: 50%;
-//         margin-top: -75px;
-//         margin-left: -150px;
-//         border: 1px solid black;
-//         border-radius:5px;
-//     }
-//     .tips p{
-//         text-align: center;
-//         line-height: 150px;
-//         color: red;
-//     }
-//     /*关闭按钮*/
-//     .cancel{
-//         display: inline-block;
-//         width: 20px;
-//         height: 20px;
-//         color: black;
-//         font-style: normal;
-//         font-size: 20px;
-//         text-align: center;
-//         position: absolute;
-//         right: 0;
-//     }
     #book-info{
         margin-top: 50px;
          width: 100%;

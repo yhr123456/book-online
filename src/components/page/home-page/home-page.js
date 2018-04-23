@@ -6,18 +6,17 @@ import Prompt from '@/components/page/home-page/Prompt'
 export default {
     name: "Home",
     components: {
-        
         Content, Prompt,
     },
     data(){
         return{
             newInfo:[],
             editorInfo:[],
-            populInfo:[]
-            
+            populInfo:[]  
         }
     },
     created(){
+        //请求json数据
         function getNewInfo(){
             return axios.get('/static/api/newBook.json')
         }
@@ -33,8 +32,7 @@ export default {
                 this.newInfo = acct.data;
                 this.editorInfo = perms.data;
                 this.populInfo = popul.data;
-            }));
-        
+            })); 
     },
     mounted(){
      this.shuffling();
@@ -62,8 +60,6 @@ export default {
             this.$emit("dtailclick",flag);
         },
         allshopping(val){
-            console.log("这是hom")
-
             this.$emit('allshopping',val)
         },
 
