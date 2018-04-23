@@ -20,7 +20,8 @@
             <p @click="more">加载更多...↓</p>
         </div>    
      </div>
-    <mey :info="transport" v-if="build"  @storage="storageinfo" @haveftooer="haveftooer"/>
+     <mey :fo="transport" v-if="build"  @storage="storageinfo" @haveftooer="haveftooer"/>
+    <!-- <mey :info="transport" v-if="build"  @storage="storageinfo" @haveftooer="haveftooer"/> -->
   </div>
 </template>
 <script src = "./classification.js"></script>

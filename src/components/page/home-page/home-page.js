@@ -57,7 +57,16 @@ export default {
                   prevEl: '.swiper-button-prev',
                 },
               });
-        }
+        },
+        detail(flag){
+            this.$emit("dtailclick",flag);
+        },
+        allshopping(val){
+            console.log("这是hom")
+
+            this.$emit('allshopping',val)
+        },
+
     }
     
    

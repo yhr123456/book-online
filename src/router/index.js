@@ -7,7 +7,7 @@ import PersonalCenter from '@/components/page/personal-center/PersonalCenter'
 import PersonalData from '@/components/page/personal-center/PersonalData'
 import Address from '@/components/page/personal-center/Address'
 import SigninAndSingnup from '@/components/page/personal-center/SigninAndSingnup'
-
+import infomation from '@/components/page/classification/infomation'
 
 
 Vue.use(Router)
@@ -51,6 +51,10 @@ export default new Router({
       name: 'SigninAndSingnup', 
       component: SigninAndSingnup
     },
-
+    {
+      path: '/infomation',
+      name: 'infomation', 
+      component: infomation
+    },
   ]
 })

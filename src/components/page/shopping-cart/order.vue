@@ -18,15 +18,15 @@
             </div>
             <div class="order info">
                 <h4>价格信息</h4>
-                <p><span>收货地址：</span><span>四川省自贡市贡井区西城雅筑3-10-50</span></p>
-                <p><span>收货人：</span><span>你爸爸</span></p>
-                <p ><span>电话：</span><span>90909</span></p>
+                <p><span>收货地址：</span><span>{{addressinfo.receivAddress.province + " " + addressinfo.receivAddress.city + " " +  addressinfo.receivAddress.district + " " +  addressinfo.receivAddress.detailed}}</span></p>
+                <p><span>收货人：</span><span>{{addressinfo.receivname}}</span></p>
+                <p ><span>电话：</span><span>{{addressinfo.phoneNum}}</span></p>
             </div>
             <div class="order addre">
-               <p @click="change"><span>修改地址</span><span>&gt;</span></p>
+               <router-link tag="p"  :to="{name: 'Address',params:display}" @click="change"><span>修改地址</span><span>&gt;</span></router-link>
             </div>
             <div class="order addre">
-               <p><span>新增地址</span><span>&gt;</span></p>
+               <router-link tag="p" :to="{name: 'Address',params:display}"><span>新增地址</span><span>&gt;</span></router-link>
             </div>
         </div>
         <div class="content">
@@ -67,14 +67,20 @@
 <script>
 export default {
   name:'order',
-  props:['total'],
+  props:['total',"addressinfo"],
   data(){
+      let addinfo = this.addressinfo;
       return{
           checked:false,
-          origen:true
+          origen:true,
+          display:{
+            show:false,
+            addressinfo:addinfo,
+        },
       }
   },
   methods:{
+      
       haveftooer(){
           this.$emit(`havefooter`,true)
       },
@@ -90,7 +96,8 @@ export default {
   computed:{
       allprice:{
           get(){
-             return this.total+10
+             return this.total+10;
+             
           }
           
       }

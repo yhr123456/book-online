@@ -6,6 +6,8 @@
        v-show = "mask"
        :mask = "mask"
        @close = "closebtn"
+       @detail = "detailclick"
+       @allshopping = "shoppingcart"
       />
         <!--标题-->
         <div class="title-box">
@@ -36,7 +38,13 @@ export default {
     },
   data(){
       return{
-          detailInfo:'',
+          detailInfo:{
+              cover: '',
+              author: '',
+              describe: '',
+              name: '',
+              price: '',
+          },
           mask:'',
           
       }
@@ -51,7 +59,14 @@ export default {
       closebtn(){
           console.log(333);
           this.mask = false;
-      }
+      },
+      detailclick(flag){
+          this.$emit("detailclick",flag);
+      },
+      shoppingcart(val){
+            console.log("这是content")
+            this.$emit('allshopping',val)
+        },
   }
 }
 </script>

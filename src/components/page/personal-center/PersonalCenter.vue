@@ -16,7 +16,7 @@
                         <div class="logo-img">
                         <img src="../../../assets/melogo.png" alt="">
                         </div>
-                    <p>你是不是傻</p>
+                    <p>{{username}}</p>
                     </div>
                    
                 </div>
@@ -59,7 +59,7 @@
             </div>
           <!-- 按钮 -->
         <div class="personal-btn">
-            <button type="button">退出登录</button>
+            <router-link tag="button" :to="{name: 'SigninAndSingnup'}">退出登录</router-link>
         </div>   
         </div>
       </div>

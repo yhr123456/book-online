@@ -1,5 +1,15 @@
 <template>
   <div class="prompt-wrap">
+       <!-- 遮罩 -->
+        <div v-if="showMask" class="mask">
+            <div>{{maskname}}</div>
+        </div>
+      <!-- 图书详情 -->
+    <infomation
+        v-show="false"
+        @storage="storageinfo"
+        :fo = "transInfo"
+    />
       <div class="prompt-content">
           <!-- 关闭按钮 -->
           <div class="prompt-close">
@@ -30,10 +40,13 @@
                           <span>2012年3月1日</span>
                       </div>
                       <!-- 详情 -->
-                      <router-link tag="div" :to="{name: 'HomePage'}" class="detail">
-                          <span>详情 &gt;</span>
-                          
+                      <div class="detail-wrap" @click="detailclick">
+                          <router-link tag="div" :to="{name: 'infomation',params:{info}}" class="detail">
+                          详情 &gt;
+                         
                       </router-link>
+                      </div>
+                      
                   </div>
               </div>
                <!-- 书名 -->
@@ -50,10 +63,13 @@
                           <span>{{"￥" + info.price}}</span>
                           </div>
                       <div class="number">
-                          <span>1本</span>
+                          <select class="select">
+                              <option value="1">1本</option>
+                              <option value="2">2本</option>
+                              <option value="3">3本</option>
+                              <option value="4">4本</option>
+                          </select>
                     </div>
-                      <!-- <span class="price">{{"￥" + info.price}}</span>
-                      <span class="number">3本</span> -->
                   </div>
                   <!-- 购物车 -->
                   <div class="prompt-shoppingcart">
@@ -68,31 +84,123 @@
   </div>
 </template>
 <script>
+import infomation from '@/components/page/classification/infomation'
 export default {
   name:"Prompt",
   props:["info"],
+  components:{
+      infomation
+  },
   data(){
+      let a = this.info;
       return{
+          maskname:"商品添加成功，客官可前往购物车查看！",
+          showMask:false,
+          display:false,
           closecolor:false,
           idx:0,
-          btnInfo:["加入购物车","立即购买"]
+          localInfo:{},
+          btnInfo:["加入购物车","立即购买"],
+          transInfo:a
       }
   },
+  created(){
+  },
   methods:{
+      //加入购物车和立即购买的点击事件
       btnclick(index){
           this.idx = index;
+          //index为0则点击的是加入购物车
+          //是1则点击的是立即购买
+          if(index == 0){    
+            //加入购物车
+            this.showMask = !this.showMask;
+            this.localInfo = this.$props.info;
+            //判断本地是否有数据
+          if(!localStorage.getItem("newinfo")){
+              console.log(1)
+              //这是本地没有
+              let  data = null;
+              if(localStorage.getItem("newinfo")){
+                  data = JSON.parse(localStorage.getItem("newinfo"))
+              }else{
+                  data = [];
+              }
+              data.push(this.localInfo);
+              localStorage.setItem(`newinfo`,JSON.stringify(data));
+          }else{
+              console.log(2)
+              let name = this.localInfo.name;
+              //获取本地数据
+              let getlocalInfo = JSON.parse(localStorage.getItem("newinfo")),
+                  getlocalInfoLen = getlocalInfo.length;
+                //循环判断本地是否已经存在这个数据了
+                for(let i = 0;i<getlocalInfoLen;i++){
+                    if(name === getlocalInfo[i].name){
+                        setTimeout( () =>{
+                            this.maskname = "该商品已经添加购物车，客官不可以重复添加哦!";
+                            return;
+                        });
+                        break;   
+                    }else if(i === getlocalInfoLen-1){
+                        //添加到本地
+                       let newdata = JSON.parse(localStorage.getItem("newinfo"))
+                        newdata.push(this.localInfo);
+                        localStorage.setItem(`newinfo`,JSON.stringify(newdata));
+                        }
+                }
+
+          }
+          setTimeout( () =>{
+            this.showMask = !this.showMask;
+          },2000)
+        //   this.maskname = "商品添加成功，客官可前往购物车查看！";
+
+
+
+          }else{
+            //立即购买
+            this.$router.push({path:"shoppingCart"});
+          }
       },
       closebtn(){
+          this.maskname = "商品添加成功，客官可前往购物车查看！";
           this.$emit("close",this.mask)
-          console.log(2)
-        //   this.mask = false;
-        //   this.closecolor = true;
-      }
+      },
+      detailclick(){
+          this.$emit("detail",this.display);
+      },
+      storageinfo(val){
+        
+          this.$emit('allshopping',val)
+        },
   }
 }
 </script>
 
 <style lang="scss">
+//遮罩
+.mask {
+    width: 100%;
+    height: 100%;
+        div {
+            z-index: 1;
+            width: 88%;
+            height: 100px;
+            font-size: 16px;
+            border: 1px solid #eee;
+            line-height: 100px;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            border-radius: 7px;
+            color: #0e49eb;
+            text-align: center;
+            background-color: rgba(255, 255, 255, 0.9);
+        }
+    }
+
  .closecolor{
      color: red;
  }
@@ -103,7 +211,7 @@ export default {
  .prompt-wrap{
      position: relative;
      width: 100%;
-    //  height: 100%;
+     height: 100%;
     //  background: rgba(94,94,94,.75);
      position: absolute;
      top: 0;
@@ -163,15 +271,18 @@ export default {
                            display: inline-block
                         }  
                     }
-                     &> .detail{
-                          >span{
+                    .detail-wrap{
+                        text-align: right;
+                         &> .detail{
+                            display: inline-block;
                             color: gray;
                             display: block;
                             text-align: right;
                             padding-right: 10px;
                             box-sizing: border-box
-                          }  
-                        }   
+                        }  
+                    }
+                    
                     
                  }
              }
@@ -182,7 +293,8 @@ export default {
                  }
              }
              &> .prompt-detal{
-                 
+                 border-bottom: 1px solid gray;
+                 padding: 0 10px;
                 //  text-overflow: ellipsis;
                      overflow: hidden;
                 //      white-space: nowrap;
@@ -196,8 +308,18 @@ export default {
              &> .prompt-price{
                  height: 10%;
                  margin: 3% 0;
-                 border: 1px solid gray;
+                 border-bottom: 1px solid gray;
+                 border-top: 1px solid gray;
                  display: flex;
+                 .number{
+                     .select{
+                         padding: 5px 20px;
+                         position: absolute;
+                         top: 50%;
+                         left: 50%;
+                         transform: translateX(-50%)translateY(-50%);
+                     }
+                 }
                  >div{
                      text-align: center;
                      position: relative;

@@ -1,11 +1,16 @@
 <template>
   <div id="app">
-
-
-      <router-view @allshopping="addshopping" @noftooer="no" @hasfooter="hasfooter"/>
-    <div id="footer" v-show="ti">   
-
-     
+      <router-view 
+      @singnup="singnupclick" 
+      @storage="addshopping"
+      @allshopping="addshopping" 
+      @noftooer="no" 
+      @hasfooter="hasfooter"
+      @dtailclick="dtail"
+      @del = "delLoca"
+      />
+    
+    <div id="footer" v-show="ti" v-if="displayFunction">   
       <ul class="footer">
           <router-link tag="li" :to="{name: 'HomePage'}" exact class="logo" >
 
@@ -20,7 +25,7 @@
               <i class="fa fa-shopping-cart fa-2x"></i>
             <p>购物车</p>
           </router-link>
-          <router-link tag="li" :to="{name: 'SigninAndSingnup'}" class="logo">
+          <router-link tag="li" :to="{name: routerto,params:newdata}" class="logo">
              <i class="fa fa-user fa-2x"></i>
             <p>我</p>
           </router-link>
@@ -34,38 +39,107 @@
 export default {
   name: 'App',
   data(){
+    // let a = this.getstorageflag();
     return{
-
+      localinfo:"",
+      strogeflag:'',
+      flag:0,
+      userinfo:[],
+      name:'',
       allCommodity:[],
-      ti:true
+      ti:true,
+      routerto:"",
+      newdata:'',
+    }
+  },
+  created(){
+    this.getinfo();
+    let newdata = JSON.parse(localStorage.getItem(`newinfo`));
+    if(newdata == null){
+      // localStorage.clear();
     }
   },
   methods:{
+    getinfo(){
+     
+       // 获取本地数据
+      let data = JSON.parse(localStorage.getItem(`userinfo`));
+      // let localdata = JSON.parse(localStorage.getItem("newinfo"));
+      //  this.localinfo = localdata;
+      
+      // 判断本地是否有数据
+      if(localStorage.getItem("userinfo")){
+         this.flag = 1;
+         console.log(data);
+         this.newdata = data[0];
+         this.routerto = "PersonalCenter";
+      }else{ 
+        this.routerto = "SigninAndSingnup";
+      }
+      //判断
+    },
+    // 删除商品
+    delLoca(val){
+      let data =JSON.parse(localStorage.getItem('newinfo'))
+      localStorage.clear
+      for(var i =0; i < val.length;i++){
+          data.splice(i,1)
+           localStorage.setItem(`newinfo`,JSON.stringify(data))
+      }
+      //如果本地的数据都被删除完了，就清空本地
+      if(newdata.length == 0 ){
+        //购物车空了后清空本地存储
+        localStorage.clear();
+      }
+
+    },
     addshopping(val){
       this.allCommodity.push(val)
       localStorage.setItem(`info`,JSON.stringify(this.allCommodity))
     },
     no(val){
-          this.ti=val
+        this.ti=val
     },
     hasfooter(val){
-          this.ti = val;
+        this.ti = val;
+    },
+    dtail(flag){
+      // this.ti = false;
+    },
+    singnupclick(val,newname){
+
+      console.log(val);
+      this.name = newname;
+      this.userinfo.push(val)
+      // 本地存储
+      localStorage.setItem(`userinfo`,JSON.stringify(this.userinfo))
     }
   },
   computed:{
+    // 用于控制尾部的显示与隐藏
     displayFunction(){
       let dis ;
       if(this.$route.params.show || this.$route.params.show == undefined){
+        this.ti = true;
         dis = true;
         this.display=true;
       }else{
-         dis = this.$route.params.show;
+        dis = this.$route.params.show;
         this.display = this.$route.params.show;
-        
       }
       
       return dis;
-    }
+    },
+    // 用于判断本地是否有用户
+    // getstorage(){
+    //   // 获取本地数据
+    //   let data = JSON.parse(localStorage.getItem(`userinfo`));
+    //   console.log(data);
+    //   //判断  
+    //   return data[0];
+    // },
+
+
   }
 }
 </script>

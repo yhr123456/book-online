@@ -1,10 +1,79 @@
 #shoopingcar{
-    
+     /*遮罩层样式*/
+     .mask-wrap{
+        background: rgba(0,0,0,0.5);
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        .tips{
+            width: 300px;
+            height: 150px;
+            background: white;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-top: -75px;
+            margin-left: -150px;
+            border: 1px solid black;
+            border-radius:5px;
+        }
+        p{
+            line-height: 0px;
+            font-size: 14px;
+            color: black;
+        }
+        div{
+            text-align: center;
+            margin-top: 40px;
+        }
+        .btn{
+            display: flex;
+            margin: 0px;
+        }
+        button{
+            color: black;
+            border-radius: 5px;
+            border: 1px solid rgb(39, 37, 37);
+            outline: none;
+            background: white;
+            width: 40%;
+            padding: 5px;
+        }
+
+    }
+    padding-bottom: 80px;
     overflow: hidden;
-    >p{
+    padding-top: 50px;
+     /*购物车空了后的样式*/
+     .tips{
+        text-align: center;
+    }
+    .tips p{
+        color: gray;
+        font-size: 16px;
+    }
+    .tips img{
+        width: 95%;
+    }
+    .go-shopping{
+        color: rgb(51, 102, 204);
+        text-decoration:none;
+    }
+    
+    //编辑按钮的样式
+    .state-wrap{
+        text-align: right;
+    }
+    .edit{
         margin: 0 5px;
         text-align: right;
         color:rgb(31, 167, 212);
+        
+    }
+    .del{
+        color:orangered;
     }
     #commodity{
         width: 95%;
@@ -13,8 +82,21 @@
         overflow: hidden;
         border-top: 1px solid gray;
         padding-top: 10px;
+        position: relative;
+        .confirm{
+            // position: absolute;
+            display: inline-block;
+            border-radius: 50% ;
+            background: cornflowerblue;
+            color: white;
+            width: 5%;
+            height: 20px;
+            transform: translateY(-35px);
+            text-align: center;
+            line-height: 20px
+        }
         img{
-            width: 30%;
+            width: 20%;
             height: 100px;
             
         }

@@ -42,6 +42,8 @@
         <Content
         :info = "newInfo"
         title = 新书上架
+        @detailclick = "detail"
+        @allshopping = "allshopping"
         />
         <Content
         title = 编辑推荐

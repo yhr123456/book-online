@@ -37,7 +37,7 @@
                 <ul class="register" v-if="registerFlag">
                     <li>
                         <i class="fa fa-mobile-phone"></i>
-                        <input type="number" placeholder="请输入您的手机号" v-model="phoneNum" @keyup="checkPhoneNum">
+                        <input type="number" placeholder="请输入您11位的手机号" v-model="phoneNum" @keyup="checkPhoneNum">
                     </li>
                     <li>
                         <i class="fa fa-user-o"></i>
@@ -61,8 +61,12 @@
             <div class="mask-layer" v-if="mask">
                 <div class="tips">
                     <i class="cancel" @click="cancelTips">×</i>
-                    <p>您输入的账号或者密码不正确请重新输入</p>
+                    <p>{{maskname}}</p>
                 </div>
+                <div class="mask-btn-wrap">
+                    <router-link v-if="maskbtn" tag="button" :to="{name: 'PersonalCenter'}" class="mask-btn" >注册成功</router-link>
+                </div>
+                
             </div>
         </div>
     </div>
@@ -77,6 +81,11 @@
     },
         data() {
             return {
+                mask:false,
+                maskbtn:false,
+                maskname:'',
+                userInfo:'',
+                username:'',
                 signinflag:true,
                 loginFlag:true,
                 registerFlag:false,
@@ -149,24 +158,42 @@
 
                 }
             },
-            /*注册成功后情况注册框值跳转到登录并将注册信息本地存储*/
+            /*注册成功后情况注册框值跳转到个人中心页面同时将数据存储到本地*/
             saveRegister(){
+                this.username = this.name;
+                //判断输入框是否有内容
+                if(this.phoneNum == "" || this.name == "" || this.password1 == "" || this.password2 == ""){
+                    this.mask = true;
+                    this.maskname = "用户注册信息不完善！"
+                }
+                let info = {
+                    user:this.username,
+                    pass:this.password1,
+                    phone:this.phoneNum
+                }
+                console.log(info)
                 console.log(3333);
                 if(this.phoneNumFlag&&this.nameFlag&&this.password1Flag&&this.password2Flag){
-                    alert('注册成功！');
+                    // alert('注册成功！');
+                    // 将用户和用户密码上传到app.vue
+                    this.userInfo = info;
+                    this.$emit("singnup",this.userInfo,this.username);
                     this.signinflag = false;
                     // this.loginFlag=true;
                     this.registerFlag=false;
                     this.loginCheckStatus='login-checked';
                     this.registerCheckStatus='';
-                    localStorage.setItem('phoneNum',this.phoneNum);
-                    localStorage.setItem('name',this.name);
-                    localStorage.setItem('password2',this.password2);
+                    this.maskname = "注册成功！"
+                    this.maskbtn = true;
+                    this.mask = true;
+                    this.$router.push('PersonalCenter');
                     this.phoneNum='';
                     this.name='';
                     this.password1='';
                     this.password2='';
                     this.logPartFlag=false;
+                    
+                    
                 }
             },
             // saveRegister(){
@@ -174,13 +201,20 @@
             // },
             /*登录时获取输入框值判断是否与本地存储的值一样*/
             loginPersInfo(){
-                /*存在注册信息登录显示个人中心隐藏登录注册*/
+                //判断本地是否有用户名
+                if(!localStorage.getItem("userinfo")){
+                    //没有
+                    
+                }
+                /*登录成功就跳转到个人中心*/
                 if(this.passwordLogin == localStorage.getItem('password2')&&this.phoneNumLogin == localStorage.getItem('phoneNum')){
                     this.logPartFlag=false;
-                    this.headerMsg = '个人中心';
+                    this.$router.replace('PersonalCenter');
                 }
                 else{
                       this.mask=true;
+                      this.maskname = "输入的密码和账号不正确!"
+
                 }
             },
             /*关闭提示框*/
@@ -191,6 +225,19 @@
     }
 </script>
 <style lang="scss">
+    // 遮罩的按钮
+    .mask-btn-wrap{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .mask-btn{
+        background: rgb(51,153,51);
+        color: white;
+        padding: 15px;
+        font-size: 16px;
+        }
+    }
+    
     .content{
         ul{
             padding: 0;
